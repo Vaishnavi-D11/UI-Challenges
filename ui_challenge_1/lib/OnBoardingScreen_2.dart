@@ -11,27 +11,39 @@ class OnBoardingScreen2 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: double.infinity,
             width: double.infinity,
-            child: Image.asset(fit: BoxFit.cover, "images/connect.jpg"),
+            child: Image.network(
+              fit: BoxFit.cover,
+              "https://images.pexels.com/photos/7941459/pexels-photo-7941459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            ),
           ),
           Positioned.fill(
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-              child: Container(color: Colors.black.withOpacity(0)),
+              filter: ImageFilter.blur(
+                sigmaX: 3,
+                sigmaY: 3,
+              ), // Apply blur with sigma values
+              child: Container(
+                color: Colors.black.withOpacity(
+                  0,
+                ), // Optional: Transparency for overlay
+              ),
             ),
           ),
           Positioned.fill(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 700,
+                height: 700, // Adjust the height of the black shade
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.black.withOpacity(0),
-                      Colors.black.withOpacity(0.99),
+                      Colors.black.withOpacity(0), // Transparent at the top
+                      Colors.black.withOpacity(
+                        0.99,
+                      ), // Solid black at the bottom
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -40,8 +52,9 @@ class OnBoardingScreen2 extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 650, left: 30),
+          Positioned(
+            bottom: 200,
+            left: 20,
             child: Text(
               "Connect With Coffee Lovers",
               style: TextStyle(
@@ -51,41 +64,44 @@ class OnBoardingScreen2 extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 700, left: 30),
+          Positioned(
+            bottom: 120,
+            left: 20,
             child: Text('''Follow other coffee enthusiasts, send them
 messages and share your favorite 
-coffee experiences.''', style: TextStyle(fontSize: 16.5, color: Colors.white)),
+coffee experiences.''', style: TextStyle(fontSize: 16, color: Colors.white)),
           ),
 
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 40, right: 30, left: 30),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Onboardingscreen3(),
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.all(23),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Onboardingscreen3(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFC67C4E),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 50,
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFC67C4E),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                   ),
                 ),

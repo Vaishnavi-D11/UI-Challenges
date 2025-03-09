@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ui_challenge_1/OnBoardingScreen_1.dart';
-import 'package:ui_challenge_1/OrderPage.dart';
-// import 'package:ui_challenge_1/OnBoardingScreen_1.dart';
 
 void main() {
   runApp(const MainApp());
